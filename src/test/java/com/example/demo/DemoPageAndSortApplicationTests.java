@@ -31,7 +31,8 @@ class DemoPageAndSortApplicationTests {
 	void contextLoads() {
 		log.info("active profiles {}", environment.getActiveProfiles());
 		log.info("default profiles {}", environment.getDefaultProfiles());
-		log.info("property PWD {}", environment.getProperty("PWD"));
+		log.info("property HOME {}", environment.getProperty("HOME"));
+		Assertions.assertTrue(environment.getProperty("HOME").contains("/Users"));
 	}
 
 	@Test
@@ -44,13 +45,14 @@ class DemoPageAndSortApplicationTests {
 		set.forEach(a -> {
 			log.info("key {}, value {} ", a.getKey(), a.getValue());
 		});
+		Assertions.assertEquals("16", prop.get("Build-Jdk-Spec"));
 
 	}
 
-	int teamMax = 12;
+	int teamMax = 11;
 	int teamTotal = 0;
 
-	int memberMax = 12;
+	int memberMax = 11;
 	int memberTotal = 0;
 
 	@Test
